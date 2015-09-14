@@ -14,6 +14,8 @@ public class Creating_Schedules extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creating__schedules);
+
+        //BackToMainMenu();
     }
 
     @Override
@@ -28,17 +30,14 @@ public class Creating_Schedules extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(item.getItemId() == R.id.action_bar_back){
+            startActivity(new Intent(Creating_Schedules.this, MainActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void BackToMainMenu(){
+  /*  private void BackToMainMenu(){
         Button backButton = (Button) findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,5 +45,5 @@ public class Creating_Schedules extends AppCompatActivity {
                 startActivity(new Intent(Creating_Schedules.this, MainActivity.class));
             }
         });
-    }
+    }*/
 }
