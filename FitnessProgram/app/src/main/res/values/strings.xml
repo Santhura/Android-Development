@@ -4,4 +4,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_creating__schedules">Creating_Schedules</string>
+    <string name="title_activity_monday">Monday</string>
+    <string name="title_activity_tuesday">Tuesday</string>
+    <string name="title_activity_wednesday">Wednesday</string>
+    <string name="title_activity_thursday">Thursday</string>
+    <string name="title_activity_friday">Friday</string>
+    <string name="title_activity_saturday">Saturday</string>
+    <string name="title_activity_sunday">Sunday</string>
 </resources>

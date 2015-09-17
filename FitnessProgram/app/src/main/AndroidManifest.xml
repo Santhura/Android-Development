@@ -20,6 +20,34 @@
             android:name=".Creating_Schedules"
             android:label="@string/title_activity_creating__schedules" >
         </activity>
+        <activity
+            android:name=".Monday"
+            android:label="@string/title_activity_monday" >
+        </activity>
+        <activity
+            android:name=".Tuesday"
+            android:label="@string/title_activity_tuesday" >
+        </activity>
+        <activity
+            android:name=".Wednesday"
+            android:label="@string/title_activity_wednesday" >
+        </activity>
+        <activity
+            android:name=".Thursday"
+            android:label="@string/title_activity_thursday" >
+        </activity>
+        <activity
+            android:name=".Friday"
+            android:label="@string/title_activity_friday" >
+        </activity>
+        <activity
+            android:name=".Saturday"
+            android:label="@string/title_activity_saturday" >
+        </activity>
+        <activity
+            android:name=".Sunday"
+            android:label="@string/title_activity_sunday" >
+        </activity>
     </application>
 
 </manifest>
