@@ -1,5 +1,6 @@
 package com.example.dylangijsbertsen.fitnessprogram;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,6 @@ public class Creating_Schedules extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creating__schedules);
-
-        //BackToMainMenu();
     }
 
     @Override
@@ -37,67 +36,31 @@ public class Creating_Schedules extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void Monday(){
-        Button monday = (Button) findViewById(R.id.button_M);
-        monday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Monday.class));
+    public void buttonOnClick(View v){
+        Button button = (Button) v;
+            switch (button.getId()){
+                case R.id.button_M:
+                    startActivity(new Intent(Creating_Schedules.this, Monday.class));
+                    break;
+                case R.id.button_T:
+                    startActivity(new Intent(Creating_Schedules.this, Tuesday.class));
+                    break;
+                case R.id.button_W:
+                    startActivity(new Intent(Creating_Schedules.this, Wednesday.class));
+                    break;
+                case R.id.button_TH:
+                    startActivity(new Intent(Creating_Schedules.this, Thursday.class));
+                    break;
+                case R.id.button_F:
+                    startActivity(new Intent(Creating_Schedules.this, Friday.class));
+                    break;
+                case R.id.button_SA:
+                    startActivity(new Intent(Creating_Schedules.this, Saturday.class));
+                    break;
+                case R.id.button_SU:
+                    startActivity(new Intent(Creating_Schedules.this, Sunday.class));
+                    break;
             }
-        });
     }
-    private void Tuesday(){
-        Button Tuesday = (Button) findViewById(R.id.button_T);
-        Tuesday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Tuesday.class));
-            }
-        });
-    }
-    private void Wednesday(){
-        Button Wednesday = (Button) findViewById(R.id.button_W);
-        Wednesday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Wednesday.class));
-            }
-        });
-    }
-    private void Thursday(){
-        Button Thursday = (Button) findViewById(R.id.button_TH);
-        Thursday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Thursday.class));
-            }
-        });
-    }
-    private void Friday(){
-        Button Friday = (Button) findViewById(R.id.button_F);
-        Friday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Friday.class));
-            }
-        });
-    }
-    private void Saturday(){
-        Button Saturday = (Button) findViewById(R.id.button_SA);
-        Saturday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Saturday.class));
-            }
-        });
-    }
-    private void Sunday(){
-        Button Sunday = (Button) findViewById(R.id.button_SU);
-        Sunday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Creating_Schedules.this, Sunday.class));
-            }
-        });
-    }
+
 }

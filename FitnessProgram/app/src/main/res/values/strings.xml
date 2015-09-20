@@ -11,4 +11,12 @@
     <string name="title_activity_friday">Friday</string>
     <string name="title_activity_saturday">Saturday</string>
     <string name="title_activity_sunday">Sunday</string>
+
+    <string name="add_assignment_save">Save assignment</string>
+    <string name="add_exercise">Add exercise</string>
+    <string name="title_activity_add_exercise">AddExercise</string>
+    <string name="main_list_empty">There are no Exercises</string>
+    <string name="Add_exercise">Add exercise</string>
+
+
 </resources>

@@ -48,6 +48,10 @@
             android:name=".Sunday"
             android:label="@string/title_activity_sunday" >
         </activity>
+        <activity
+            android:name=".AddExercise"
+            android:label="@string/title_activity_add_exercise" >
+        </activity>
     </application>
 
 </manifest>

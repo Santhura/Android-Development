@@ -14,7 +14,8 @@
         android:id="@+id/button_M"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -24,7 +25,8 @@
         android:layout_marginTop="23dp"
         android:layout_below="@+id/button_M"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -34,7 +36,8 @@
         android:layout_marginTop="25dp"
         android:layout_below="@+id/button_T"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -43,7 +46,8 @@
         android:id="@+id/button_TH"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -53,7 +57,8 @@
         android:layout_marginTop="26dp"
         android:layout_below="@+id/button_TH"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -63,7 +68,8 @@
         android:layout_below="@+id/button_F"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
+        android:layout_marginTop="29dp"
+        android:onClick="buttonOnClick" />
 
     <Button
         android:layout_width="wrap_content"
@@ -72,5 +78,6 @@
         android:id="@+id/button_SU"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonOnClick" />
 </RelativeLayout>
