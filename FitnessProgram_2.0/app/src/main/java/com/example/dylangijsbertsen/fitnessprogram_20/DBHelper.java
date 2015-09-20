@@ -13,25 +13,25 @@ import android.util.Log;
 public class DBHelper extends SQLiteOpenHelper
 {
     // Database info
-    private static final String DATABASE_NAME = "fitnessProgram.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final String DB_NAME = "fitnessProgram.db";
+    private static final int DB_VERSION = 1;
 
     // Assignments
-    public static final String TABLE_ASSIGNMENTS = "assignments";
-    public static final String COLUMN_ASSIGNMENT_ID = "assignment_id";
-    public static final String COLUMN_ASSIGNMENT = "assignment";
+    public static final String TABLE_EXERCISES = "assignments";
+    public static final String COLUMN_EXERCISE_ID = "assignment_id";
+    public static final String COLUMN_EXERCISE = "assignment";
 
     // Creating the table
     private static final String DATABASE_CREATE_ASSIGNMENTS =
-            "CREATE TABLE " + TABLE_ASSIGNMENTS +
+            "CREATE TABLE " + TABLE_EXERCISES +
                     "(" +
-                    COLUMN_ASSIGNMENT_ID + " integer primary key autoincrement, " +
-                    COLUMN_ASSIGNMENT + " text not null" +
+                    COLUMN_EXERCISE_ID + " integer primary key autoincrement, " +
+                    COLUMN_EXERCISE + " text not null" +
                     ");";
 
     public DBHelper(Context context)
     {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         Log.w(DBHelper.class.getName(), "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ASSIGNMENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCISES);
         onCreate(db);
     }
 }

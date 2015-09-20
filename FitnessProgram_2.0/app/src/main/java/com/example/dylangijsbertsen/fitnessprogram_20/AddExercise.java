@@ -46,15 +46,15 @@ public class AddExercise extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.save_exercise) {
-            long assignmentId = 0;
+            long exerciseId = 0;
             try {
-                assignmentId = datasource.createAssignment(exerciseEditText.getText().toString());
+                exerciseId = datasource.createAssignment(exerciseEditText.getText().toString());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
             Intent resultIntent = new Intent();
-            resultIntent.putExtra(MainActivity.EXTRA_ASSIGNMENT_ID, assignmentId);
+            resultIntent.putExtra(MainActivity.EXTRA_EXERCISE_ID, exerciseId);
             setResult(Activity.RESULT_OK, resultIntent);
             finish();
             return true;

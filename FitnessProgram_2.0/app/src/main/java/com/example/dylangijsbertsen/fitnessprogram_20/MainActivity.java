@@ -17,10 +17,12 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    private ArrayAdapter<Assignment> exerciseArrayAdapter;
+    private ArrayAdapter<Exercise> exerciseArrayAdapter;
     public static final String EXTRA_EXERCISE = "extraExercise";
     private DataSource datasource;
-    public static final String EXTRA_ASSIGNMENT_ID = "extraAssignmentId";
+    public static final String EXTRA_EXERCISE_ID = "extraExerciseId";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
         listView.setEmptyView(emptyView);
 
         datasource = new DataSource(this);
-        List<Assignment> assignments = null;
+        List<Exercise> exercise = null;
         try {
-            assignments = datasource.getAllAssignments();
+            exercise = datasource.getAllAssignments();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        exerciseArrayAdapter = new ArrayAdapter<Assignment>(this, android.R.layout.simple_list_item_1, assignments);
+        exerciseArrayAdapter = new ArrayAdapter<Exercise>(this, android.R.layout.simple_list_item_1, exercise);
         listView.setAdapter(exerciseArrayAdapter);
 
     }
@@ -54,10 +56,9 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-       /* if (id == R.id.add_exercise) {
-            startActivityForResult(new Intent(this, AddExercise.class), 1);
+      /*  if (id == R.id.action_bar_menu_delete_all) {
+
             return true;
         }
 */
@@ -76,16 +77,16 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == 1){
             if(resultCode == RESULT_OK) {
-                long assignmentId = data.getLongExtra(EXTRA_ASSIGNMENT_ID, -1);
-                if(assignmentId != -1)
+                long exerciseId = data.getLongExtra(EXTRA_EXERCISE_ID, -1);
+                if(exerciseId != -1)
                 {
-                    Assignment assignment = null;
+                    Exercise exercise = null;
                     try {
-                        assignment = datasource.getAssignment(assignmentId);
+                        exercise = datasource.getAssignment(exerciseId);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                    exerciseArrayAdapter.add(assignment);
+                    exerciseArrayAdapter.add(exercise);
                 }
             }
 

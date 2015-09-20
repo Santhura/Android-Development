@@ -16,21 +16,21 @@ import java.util.List;
 
 public class DataSource
 {
-    private SQLiteDatabase database;
+    private SQLiteDatabase db;
     private DBHelper dbHelper;
-    private String[] assignmentAllColumns = { DBHelper.COLUMN_ASSIGNMENT_ID, DBHelper.COLUMN_ASSIGNMENT };
+    private String[] exerciseAllColumns = { DBHelper.COLUMN_EXERCISE_ID, DBHelper.COLUMN_EXERCISE };
 
     public DataSource(Context context)
     {
         dbHelper = new DBHelper(context);
-        database = dbHelper.getWritableDatabase();
+        db = dbHelper.getWritableDatabase();
         dbHelper.close();
     }
 
     // Opens the database to use it
     public void open() throws SQLException
     {
-        database = dbHelper.getWritableDatabase();
+        db = dbHelper.getWritableDatabase();
     }
 
     // Closes the database when you no longer need it
@@ -42,94 +42,94 @@ public class DataSource
     public long createAssignment(String assignment)throws SQLException
     {
         // If the database is not open yet, open it
-        if (!database.isOpen())
+        if (!db.isOpen())
             open();
 
         ContentValues values = new ContentValues();
-        values.put(DBHelper.COLUMN_ASSIGNMENT, assignment);
-        long insertId = database.insert(DBHelper.TABLE_ASSIGNMENTS, null, values);
+        values.put(DBHelper.COLUMN_EXERCISE, assignment);
+        long insertId = db.insert(DBHelper.TABLE_EXERCISES, null, values);
 
         // If the database is open, close it
-        if (database.isOpen())
+        if (db.isOpen())
             close();
 
         return insertId;
     }
 
-    public void deleteAssignment(Assignment assignment)throws SQLException
+    public void deleteExercise(Exercise assignment)throws SQLException
     {
-        if (!database.isOpen())
+        if (!db.isOpen())
             open();
 
-        database.delete(DBHelper.TABLE_ASSIGNMENTS, DBHelper.COLUMN_ASSIGNMENT_ID + " =?", new String[] { Long.toString(assignment.getId())});
+        db.delete(DBHelper.TABLE_EXERCISES, DBHelper.COLUMN_EXERCISE_ID + " =?", new String[] { Long.toString(assignment.getId())});
 
-        if (database.isOpen())
+        if (db.isOpen())
             close();
     }
 
-    public void updateAssignment(Assignment assignment)throws SQLException
+    public void updateExercise(Exercise exercise)throws SQLException
     {
-        if (!database.isOpen())
+        if (!db.isOpen())
             open();
 
         ContentValues args = new ContentValues();
-        args.put(DBHelper.COLUMN_ASSIGNMENT, assignment.getAssignment());
-        database.update(DBHelper.TABLE_ASSIGNMENTS, args, DBHelper.COLUMN_ASSIGNMENT_ID + "=?", new String[] { Long.toString(assignment.getId()) });
+        args.put(DBHelper.COLUMN_EXERCISE, exercise.getExercise());
+        db.update(DBHelper.TABLE_EXERCISES, args, DBHelper.COLUMN_EXERCISE_ID + "=?", new String[] { Long.toString(exercise.getId()) });
 
-        if (database.isOpen())
+        if (db.isOpen())
             close();
     }
 
-    public List<Assignment> getAllAssignments()throws SQLException
+    public List<Exercise> getAllAssignments()throws SQLException
     {
-        if (!database.isOpen())
+        if (!db.isOpen())
             open();
 
-        List<Assignment> assignments = new ArrayList<Assignment>();
+        List<Exercise> assignments = new ArrayList<Exercise>();
 
-        Cursor cursor = database.query(DBHelper.TABLE_ASSIGNMENTS, assignmentAllColumns, null, null, null, null, null);
+        Cursor cursor = db.query(DBHelper.TABLE_EXERCISES, exerciseAllColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast())
         {
-            Assignment assignment = cursorToAssignment(cursor);
+            Exercise assignment = cursorToAssignment(cursor);
             assignments.add(assignment);
             cursor.moveToNext();
         }
         // make sure to close the cursor
         cursor.close();
 
-        if (database.isOpen())
+        if (db.isOpen())
             close();
 
         return assignments;
     }
 
-    public Assignment getAssignment(long columnId)throws SQLException
+    public Exercise getAssignment(long columnId)throws SQLException
     {
-        if (!database.isOpen())
+        if (!db.isOpen())
             open();
 
-        Cursor cursor = database.query(DBHelper.TABLE_ASSIGNMENTS, assignmentAllColumns, DBHelper.COLUMN_ASSIGNMENT_ID + "=?", new String[] { Long.toString(columnId)}, null, null, null);
+        Cursor cursor = db.query(DBHelper.TABLE_EXERCISES, exerciseAllColumns, DBHelper.COLUMN_EXERCISE_ID + "=?", new String[] { Long.toString(columnId)}, null, null, null);
 
         cursor.moveToFirst();
-        Assignment assignment = cursorToAssignment(cursor);
+        Exercise assignment = cursorToAssignment(cursor);
         cursor.close();
 
-        if (database.isOpen())
+        if (db.isOpen())
             close();
 
         return assignment;
     }
 
-    private Assignment cursorToAssignment(Cursor cursor)
+    private Exercise cursorToAssignment(Cursor cursor)
     {
         try
         {
-            Assignment assignment = new Assignment();
-            assignment.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_ASSIGNMENT_ID)));
-            assignment.setAssignment(cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_ASSIGNMENT)));
-            return assignment;
+            Exercise exercise = new Exercise();
+            exercise.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_EXERCISE_ID)));
+            exercise.setExercise(cursor.getString(cursor.getColumnIndexOrThrow(DBHelper.COLUMN_EXERCISE)));
+            return exercise;
         }catch(CursorIndexOutOfBoundsException exception)
         {
             exception.printStackTrace();

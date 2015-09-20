@@ -4,10 +4,10 @@ package com.example.dylangijsbertsen.fitnessprogram_20;
  * Created by Dylan Gijsbertsen on 20-9-2015.
  */
 
-public class Assignment
+public class Exercise
 {
     private long id;
-    private String assignment;
+    private String exercise;
 
     public long getId() {
         return id;
@@ -17,17 +17,17 @@ public class Assignment
         this.id = id;
     }
 
-    public String getAssignment() {
-        return assignment;
+    public String getExercise() {
+        return exercise;
     }
 
-    public void setAssignment(String assignment) {
-        this.assignment = assignment;
+    public void setExercise(String exercise) {
+        this.exercise = exercise;
     }
 
     // Will be used by the ArrayAdapter in the ListView
     @Override
     public String toString() {
-        return assignment;
+        return exercise;
     }
 }
