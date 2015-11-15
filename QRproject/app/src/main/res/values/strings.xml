@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">QR project</string>
+    <string name="action_settings">Settings</string>
+    <string name="succes">result_succeeded</string>
+    <string name="failed">result_failed</string>
+    <string name="result_succeeded">Succeeded</string>
+    <string name="result_failed">Failed</string>
+</resources>
